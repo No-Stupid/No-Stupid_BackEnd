@@ -7,12 +7,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 public class LoginForm {
 
-    @NotEmpty
+    @NotEmpty(message = "필수 입력 값입니다")
     private String memberEmail;
 
-    @NotEmpty
+    @NotEmpty(message = "필수 입력 값입니다")
     private String memberPwd;
 }

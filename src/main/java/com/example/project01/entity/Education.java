@@ -1,16 +1,14 @@
 package com.example.project01.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class education {
+@Table(name = "education")
+public class Education {
 
     @Id
     @GeneratedValue
@@ -23,11 +21,11 @@ public class education {
 
     private String major;
 
-    private int admissionDate;
+    //private int admissionDate;
 
-    private int graduateDate;
+    //private int graduateDate;
 
-    private Long grades;
+    private float grades;
 
     private String prize;
 

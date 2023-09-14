@@ -1,7 +1,7 @@
 package com.example.project01.service;
 
 import com.example.project01.entity.Member;
-import com.example.project01.exception.CustomExceptionHandler;
+import com.example.project01.exception.EmailCheckException;
 import com.example.project01.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +34,7 @@ public class MemberService {
         List<Member> findMembers = memberRepository.findByEmail(member.getMemberEmail());
         if(!findMembers.isEmpty()) {
             log.info("가입된 이메일");
-            throw new IllegalStateException("이미 가입된 이메일");
+            throw new EmailCheckException("이미 가입된 이메일");
         }
     }
 

@@ -11,19 +11,19 @@ import lombok.Setter;
 @Setter
 public class MemberFormDTO {
 
-    @NotEmpty
+    @NotEmpty(message = "필수 입력 값입니다")
     private String memberName;
 
-    @NotEmpty
+    @NotEmpty(message = "필수 입력 값입니다")
     private String memberBirth;
 
-    @NotEmpty
+    @NotEmpty(message = "필수 입력 값입니다")
     private String memberPhone;
 
-    @NotEmpty
-    @Email
+    @NotEmpty(message = "필수 입력 값입니다")
+    @Email(message = "이메일 형식을 지켜 입력해주세요")
     private String memberEmail;
 
-    @NotEmpty
+    @NotEmpty(message = "필수 입력 값입니다")
     private String memberPwd;
 }
