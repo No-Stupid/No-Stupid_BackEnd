@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>기업명</th>
+                <th>직무</th>
+                <th>담당업무</th>
+<!--                <th>입사일</th>-->
+<!--                <th>퇴사일</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="career : ${career}">
+                <td th:text="${career.id}"></td>
+                <td th:text="${career.company}"></td>
+                <td th:text="${career.role}"></td>
+                <td th:text="${career.job}"></td>
+<!--                <td th:text="${career.joinCompanyDate}"></td>-->
+<!--                <td th:text="${career.leaveCompanyDate}"></td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+
+</div> <!-- /container -->
+
+</body>
+</html>
