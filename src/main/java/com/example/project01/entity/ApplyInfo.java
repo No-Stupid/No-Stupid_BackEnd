@@ -1,5 +1,6 @@
-package com.example.project01.dto;
+package com.example.project01.entity;
 
+import com.example.project01.type.ApplyType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,13 +22,14 @@ public class ApplyInfo {
 
     private String qualification;
 
-    //private String deadLine;
+    private String deadLine;
 
     private String homePageUrl;
 
     private String salary;
 
-    private String applyCheck;
+    @Enumerated(EnumType.STRING)
+    private ApplyType applyCheck;
 
     private String companyTalent;
 }

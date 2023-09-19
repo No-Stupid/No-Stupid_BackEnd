@@ -30,36 +30,15 @@
             <input type="text" th:field="*{qualification}" class="form-control" placeholder="자격요건을 입력하세요" th:class="${#fields.hasErrors('qualification')}? 'form-controlfieldError' : 'form-control'">
             <p th:if="${#fields.hasErrors('qualification')}" th:errors="*{qualification}">Incorrect date</p>
         </div>
-<!--        <div class="form-group">-->
-<!--            <label th:for="admissionDate">입학일자</label>-->
-<!--            <select th:field="*{admissionYear}" class="form-control">-->
-<!--                <option>2020</option>-->
-<!--                <option>2021</option>-->
-<!--                <option>2022</option>-->
-<!--                <option>2023</option>-->
-<!--            </select>-->
-<!--            <select th:field="*{admissionMonth}" class="form-control">-->
-<!--                <option>1</option>-->
-<!--                <option>2</option>-->
-<!--                <option>3</option>-->
-<!--                <option>4</option>-->
-<!--            </select>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            <label th:for="graduateDate">졸업일자</label>-->
-<!--            <select th:field="*{graduateYear}" class="form-control">-->
-<!--                <option>2020</option>-->
-<!--                <option>2021</option>-->
-<!--                <option>2022</option>-->
-<!--                <option>2023</option>-->
-<!--            </select>-->
-<!--            <select th:field="*{graduateMonth}" class="form-control">-->
-<!--                <option>1</option>-->
-<!--                <option>2</option>-->
-<!--                <option>3</option>-->
-<!--                <option>4</option>-->
-<!--            </select>-->
-<!--        </div>-->
+        <div>
+            <div>마감 일자</div>
+            <select th:field="*{deadLineMonth}" class="form-select">
+                <option th:each="deadLineMonth : ${deadLineMonths}" th:value="${deadLineMonth.code}" th:text="${deadLineMonth.month}">1</option>
+            </select>
+            <select th:field="*{deadLineDay}" class="form-select">
+                <option th:each="deadLineDay : ${deadLineDays}" th:value="${deadLineDay.code}" th:text="${deadLineDay.day}">1</option>
+            </select>
+        </div>
         <div class="form-group">
             <label th:for="homePageUrl">기업 홈페이지</label>
             <input type="text" th:field="*{homePageUrl}" class="form-control" placeholder="기업홈페이지를 입력하세요" th:class="${#fields.hasErrors('homePageUrl')}? 'form-controlfieldError' : 'form-control'">
@@ -68,13 +47,16 @@
         <div class="form-group">
             <label th:for="salary">연봉</label>
             <input type="text" th:field="*{salary}" class="form-control" placeholder="연봉을 입력하세요" th:class="${#fields.hasErrors('salary')}? 'form-controlfieldError' : 'form-control'">
-            <p th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">Incorrect date</p>
+            <p th:if="${#fields.hasErrors('salary')}" th:errers="*{salary}">Incorrect date</p>
         </div>
-        <div class="form-group">
-            <label th:for="applyCheck">지원 여부</label>
-            <input type="radio" th:field="*{apllyCheck}" class="form-control" th:class="${#fields.hasErrors('applyCheck')}? 'form-controlfieldError' : 'form-control'">
-            <p th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">Incorrect date</p>
+        <div>지원 여부</div>
+        <div th:each="type : ${applyTypes}" class="form-check form-check-inline">
+            <input type="radio" th:field="${applyInfoForm.applyCheck}" th:value="${type.name()}" class="form-check-input">
+            <label th:for="${#ids.next('applyType')}" th:text="${type.description}" class="form-check-label">
+                지원예정
+            </label>
         </div>
+        <br>
         <div class="form-group">
             <label th:for="companyTalent">기업 인재상</label>
             <input type="text" th:field="*{companyTalent}" class="form-control" placeholder="기업 인재상을 입력하세요" th:class="${#fields.hasErrors('companyTalent')}? 'form-controlfieldError' : 'form-control'">

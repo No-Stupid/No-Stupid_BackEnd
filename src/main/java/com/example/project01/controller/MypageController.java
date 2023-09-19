@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 @Slf4j
@@ -44,6 +46,13 @@ public class MypageController {
         return "redirect:/";
     }
 
+    @GetMapping("/educationList")
+    public String eduList(Model model) {
+        List<Education> educations = mypageService.list_edu();
+        model.addAttribute("educations", educations);
+        return "mypage/educationList";
+    }
+
     @GetMapping("/career")
     public String careerForm(Model model) {
         model.addAttribute("careerForm", new CareerForm());
@@ -63,6 +72,13 @@ public class MypageController {
         mypageService.save_career(career);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/careerList")
+    public String careerList(Model model) {
+        List<Career> careers = mypageService.list_career();
+        model.addAttribute("careers", careers);
+        return "mypage/careerList";
     }
 
 }

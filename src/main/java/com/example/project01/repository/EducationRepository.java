@@ -5,6 +5,8 @@ import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class EducationRepository {
@@ -14,4 +16,11 @@ public class EducationRepository {
     public void save(Education education) {
         em.persist(education);
     }
+
+    public List<Education> findAll() {
+        return em.createQuery("select e from Education e", Education.class)
+                .getResultList();
+    }
+
+
 }

@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -25,10 +27,18 @@ public class MypageService {
         return education.getId();
     }
 
+    public List<Education> list_edu() {
+        return educationRepository.findAll();
+    }
+
     @Transactional
     public Long save_career(Career career) {
         careerRepository.save(career);
         return career.getId();
+    }
+
+    public List<Career> list_career() {
+        return careerRepository.findAll();
     }
 
 }
