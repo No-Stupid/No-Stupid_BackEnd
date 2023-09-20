@@ -3,15 +3,24 @@
 <head th:replace="fragments/header :: header" />
 <link th:href="@{/css/bootstrap.min.css}"
       href="../css/bootstrap.min.css" rel="stylesheet">
+
 <style>
     .fieldError {
         border-color: #bd2130;
     }
 </style>
 
-
+<script>
+    $("select[name=deadLineMonth]").change(function () {
+        var selected = ($("select[name=deadLineMonth] option:selected").text());
+    })
+    $("select[name=deadLineDay]").change(function () {
+        var selected = ($("select[name=deadLineDay] option:selected").text());
+    })
+</script>
 
 <body>
+
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <form role="form" action="/applyInfo" th:object="${applyInfoForm}" method="post">
