@@ -29,4 +29,7 @@ public class Education {
 
     private String prize;
 
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 }

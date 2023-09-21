@@ -32,4 +32,8 @@ public class ApplyInfo {
     private ApplyType applyCheck;
 
     private String companyTalent;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 }
