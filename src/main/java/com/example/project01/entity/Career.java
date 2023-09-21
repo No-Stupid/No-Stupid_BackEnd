@@ -21,8 +21,8 @@ public class Career {
 
     private String job;
 
-    //private int joinCompanyDate;
+    private String joinCompanyDate;
 
-    //private int leaveCompanyDate;
+    private String leaveCompanyDate;
 
 }

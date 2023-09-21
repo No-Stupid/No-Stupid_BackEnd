@@ -36,8 +36,8 @@ public class MypageController {
         education.setSchool(educationForm.getSchool());
         education.setDegree(educationForm.getDegree());
         education.setMajor(educationForm.getMajor());
-        //education.setAdmissionDate(educationForm.getAdmissionDate());
-        //education.setGraduateDate(educationForm.getGraduateDate());
+        education.setAdmissionDate(educationForm.getAdmissionDate());
+        education.setGraduateDate(educationForm.getGraduateDate());
         education.setGrades(educationForm.getGrades());
         education.setPrize(educationForm.getPrize());
 
@@ -66,8 +66,8 @@ public class MypageController {
         career.setCompany(careerForm.getCompany());
         career.setRole(careerForm.getRole());
         career.setJob(careerForm.getJob());
-        //career.setJoinCompanyDate(careerForm.getJoinCompanyDate());
-        //career.setLeaveCompanyDate(careerForm.getLeaveCompanyDate());
+        career.setJoinCompanyDate(careerForm.getJoinCompanyDate());
+        career.setLeaveCompanyDate(careerForm.getLeaveCompanyDate());
 
         mypageService.save_career(career);
 

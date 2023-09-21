@@ -9,7 +9,11 @@
     }
 </style>
 
-
+<script>
+    const dateControl = document.querySelector('input[type="date"]')
+    alert(dateControl.value)
+    console.log(dateControl.value)
+</script>
 
 <body>
 <div class="container">
@@ -30,6 +34,22 @@
             <input type="text" th:field="*{major}" class="form-control" placeholder="전공을 입력하세요" th:class="${#fields.hasErrors('major')}? 'form-controlfieldError' : 'form-control'">
             <p th:if="${#fields.hasErrors('major')}" th:errors="*{major}">Incorrect date</p>
         </div>
+        <label for="admissionDate">입학일을 선택하세요:
+            <input type="date"
+                   th:field="*{admissionDate}"
+                   id="admissionDate"
+                   max="2023-12-31"
+                   min="2021-06-05"
+                   value="2023-09-15">
+        </label>
+        <label for="graduateDate">졸업일을 선택하세요:
+            <input type="date"
+                   th:field="*{graduateDate}"
+                   id="graduateDate"
+                   max="2023-12-31"
+                   min="2021-06-05"
+                   value="2023-09-15">
+        </label>
 <!--        <div class="form-group">-->
 <!--            <label th:for="admissionDate">입학일자</label>-->
 <!--            <select th:field="*{admissionYear}" class="form-control">-->

@@ -37,7 +37,7 @@ public class ApplyController {
         applyInfo.setCompanyName(applyInfoForm.getCompanyName());
         applyInfo.setRole(applyInfoForm.getRole());
         applyInfo.setQualification(applyInfoForm.getQualification());
-        //applyInfo.setDeadLine(applyInfoForm.getDeadLineMonth() + applyInfoForm.getDeadLineDay());
+        applyInfo.setDeadLine(applyInfoForm.getDeadLine());
         applyInfo.setHomePageUrl(applyInfoForm.getHomePageUrl());
         applyInfo.setSalary(applyInfoForm.getSalary());
         applyInfo.setApplyCheck(applyInfoForm.getApplyCheck());
@@ -65,23 +65,23 @@ public class ApplyController {
         return values;
     }
 
-    @ModelAttribute("deadLineMonths")
-    public List<DeadLineMonth> deadLineMonths() {
-        List<DeadLineMonth> deadLineMonths = new ArrayList<>();
-        deadLineMonths.add(new DeadLineMonth(1, 1));
-        deadLineMonths.add(new DeadLineMonth(2, 2));
-        deadLineMonths.add(new DeadLineMonth(3, 3));
-        return deadLineMonths;
-    }
-
-    @ModelAttribute("deadLineDays")
-    public List<DeadLineDay> deadLineDays() {
-        List<DeadLineDay> deadLineDays = new ArrayList<>();
-        deadLineDays.add(new DeadLineDay(1, 1));
-        deadLineDays.add(new DeadLineDay(2, 2));
-        deadLineDays.add(new DeadLineDay(3, 3));
-        return deadLineDays;
-    }
+//    @ModelAttribute("deadLineMonths")
+//    public List<DeadLineMonth> deadLineMonths() {
+//        List<DeadLineMonth> deadLineMonths = new ArrayList<>();
+//        deadLineMonths.add(new DeadLineMonth(1, 1));
+//        deadLineMonths.add(new DeadLineMonth(2, 2));
+//        deadLineMonths.add(new DeadLineMonth(3, 3));
+//        return deadLineMonths;
+//    }
+//
+//    @ModelAttribute("deadLineDays")
+//    public List<DeadLineDay> deadLineDays() {
+//        List<DeadLineDay> deadLineDays = new ArrayList<>();
+//        deadLineDays.add(new DeadLineDay(1, 1));
+//        deadLineDays.add(new DeadLineDay(2, 2));
+//        deadLineDays.add(new DeadLineDay(3, 3));
+//        return deadLineDays;
+//    }
 
 
 }

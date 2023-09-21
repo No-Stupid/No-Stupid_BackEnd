@@ -13,9 +13,9 @@ public class EducationForm {
 
     private String major;
 
-    //private int admissionDate;
+    private String admissionDate;
 
-    //private int graduateDate;
+    private String graduateDate;
 
     private float grades;
 

@@ -11,12 +11,10 @@
 </style>
 
 <script>
-    $("select[name=deadLineMonth]").change(function () {
-        var selected = ($("select[name=deadLineMonth] option:selected").text());
-    })
-    $("select[name=deadLineDay]").change(function () {
-        var selected = ($("select[name=deadLineDay] option:selected").text());
-    })
+        const dateControl = document.querySelector('input[type="date"]')
+        alert(dateControl.value)
+        console.log(dateControl.value)
+
 </script>
 
 <body>
@@ -39,15 +37,14 @@
             <input type="text" th:field="*{qualification}" class="form-control" placeholder="자격요건을 입력하세요" th:class="${#fields.hasErrors('qualification')}? 'form-controlfieldError' : 'form-control'">
             <p th:if="${#fields.hasErrors('qualification')}" th:errors="*{qualification}">Incorrect date</p>
         </div>
-        <div>
-            <div>마감 일자</div>
-            <select th:field="*{deadLineMonth}" class="form-select">
-                <option th:each="deadLineMonth : ${deadLineMonths}" th:value="${deadLineMonth.code}" th:text="${deadLineMonth.month}">1</option>
-            </select>
-            <select th:field="*{deadLineDay}" class="form-select">
-                <option th:each="deadLineDay : ${deadLineDays}" th:value="${deadLineDay.code}" th:text="${deadLineDay.day}">1</option>
-            </select>
-        </div>
+        <label for="date">마감일을 선택하세요:
+            <input type="date"
+                   th:field="*{deadLine}"
+                   id="date"
+                   max="2023-12-31"
+                   min="2021-06-05"
+                   value="2023-09-15">
+        </label>
         <div class="form-group">
             <label th:for="homePageUrl">기업 홈페이지</label>
             <input type="text" th:field="*{homePageUrl}" class="form-control" placeholder="기업홈페이지를 입력하세요" th:class="${#fields.hasErrors('homePageUrl')}? 'form-controlfieldError' : 'form-control'">
@@ -71,7 +68,7 @@
             <input type="text" th:field="*{companyTalent}" class="form-control" placeholder="기업 인재상을 입력하세요" th:class="${#fields.hasErrors('companyTalent')}? 'form-controlfieldError' : 'form-control'">
             <p th:if="${#fields.hasErrors('companyTalent')}" th:errors="*{companyTalent}">Incorrect date</p>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" >Submit</button>
     </form>
     <br/>
     <div th:replace="fragments/footer :: footer" />
