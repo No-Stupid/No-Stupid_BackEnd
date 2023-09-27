@@ -57,7 +57,7 @@ public class LoginController {
 
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
 
-        log.info("return 직전");
+        log.info("loginMember={}", loginMember.getMemberName());
 
         return "loginHome";
     }
