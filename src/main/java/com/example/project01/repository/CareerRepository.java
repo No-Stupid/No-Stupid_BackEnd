@@ -23,4 +23,8 @@ public class CareerRepository {
                 .getResultList();
     }
 
+    public Career findOne(Long id) {
+        return em.find(Career.class, id);
+    }
+
 }

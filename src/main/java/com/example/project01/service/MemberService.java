@@ -48,4 +48,13 @@ public class MemberService {
             return null;
         }
     }
+
+    @Transactional
+    public void updateMember(Long id, String memberPhone, String memberEmail, String memberPwd){
+        Member findMember = memberRepository.findOne(id);
+        findMember.setMemberPhone(memberPhone);
+        findMember.setMemberEmail(memberEmail);
+        findMember.setMemberPwd(memberPwd);
+
+    }
 }

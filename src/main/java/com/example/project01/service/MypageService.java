@@ -41,4 +41,18 @@ public class MypageService {
         return careerRepository.findAll();
     }
 
+    @Transactional
+    public void updateCareer(Long careerId, String company, String role, String job, String joinCompanyDate, String leaveCompanyDate) {
+        Career findCareer = careerRepository.findOne(careerId);
+        findCareer.setCompany(company);
+        findCareer.setRole(role);
+        findCareer.setJob(job);
+        findCareer.setJoinCompanyDate(joinCompanyDate);
+        findCareer.setLeaveCompanyDate(leaveCompanyDate);
+    }
+
+    public Career findOne(Long careerId) {
+        return careerRepository.findOne(careerId);
+    }
+
 }

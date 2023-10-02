@@ -1,16 +1,19 @@
 package com.example.project01.controller;
 
-import com.example.project01.dto.MemberFormDTO;
+import com.example.project01.dto.Member.MemberFormDTO;
+import com.example.project01.dto.Member.MemberUpdateForm;
 import com.example.project01.entity.Member;
 import com.example.project01.service.MemberService;
 import jakarta.validation.Valid;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -53,5 +56,20 @@ public class MemberController {
 
         return "redirect:/";
     }
+
+    @GetMapping("/member/edit/{id}")
+    public String updateForm(Model model) {
+        model.addAttribute("MemberUpdateForm", new MemberUpdateForm());
+
+        return "/members/updateForm";
+    }
+
+    @PostMapping("/member/edit/{id}")
+    public String updateMember(@PathVariable Long id, @ModelAttribute("memberUpdateForm")MemberUpdateForm memberUpdateForm) {
+        memberService.updateMember(id, memberUpdateForm.getMemberPhone(), memberUpdateForm.getMemberEmail(), memberUpdateForm.getMemberPwd());
+
+        return "redirect:/loginHome";
+    }
+
 
 }

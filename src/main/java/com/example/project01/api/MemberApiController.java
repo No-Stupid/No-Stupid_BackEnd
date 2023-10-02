@@ -1,9 +1,7 @@
 package com.example.project01.api;
 
 
-import com.example.project01.api.data.CreateMemberRequest;
-import com.example.project01.api.data.CreateMemberResponse;
-import com.example.project01.dto.MemberFormDTO;
+import com.example.project01.dto.Member.MemberFormDTO;
 import com.example.project01.entity.Member;
 import com.example.project01.service.MemberService;
 import jakarta.validation.Valid;

@@ -1,6 +1,6 @@
 package com.example.project01.controller;
 
-import com.example.project01.dto.LoginForm;
+import com.example.project01.dto.Member.LoginForm;
 import com.example.project01.entity.Member;
 import com.example.project01.service.MemberService;
 import com.example.project01.session.SessionConst;

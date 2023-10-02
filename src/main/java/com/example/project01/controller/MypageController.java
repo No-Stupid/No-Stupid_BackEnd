@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -79,6 +80,22 @@ public class MypageController {
         List<Career> careers = mypageService.list_career();
         model.addAttribute("careers", careers);
         return "mypage/careerList";
+    }
+
+    @GetMapping("/career/{id}/edit")
+    public String updateCareerForm(@PathVariable("careerId") Long careerId, Model model) {
+        Career career = mypageService.findOne(careerId);
+
+        CareerForm careerForm = new CareerForm();
+        careerForm.setId(career.getId());
+        careerForm.setCompany(career.getCompany());
+        careerForm.setRole(career.getRole());
+        careerForm.setJob(career.getJob());
+        careerForm.setJoinCompanyDate(career.getJoinCompanyDate());
+        careerForm.setLeaveCompanyDate(career.getLeaveCompanyDate());
+
+        model.addAttribute("careerForm", careerForm);
+        return "mypage/updateCareer";
     }
 
 }
