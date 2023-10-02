@@ -2,12 +2,14 @@ package com.example.project01.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "education")
+@RequiredArgsConstructor
 public class Education {
 
     @Id
@@ -32,4 +34,8 @@ public class Education {
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
+
+    public Education(Long id) {
+        this.id = id;
+    }
 }
