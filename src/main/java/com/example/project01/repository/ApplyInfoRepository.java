@@ -1,6 +1,7 @@
 package com.example.project01.repository;
 
 import com.example.project01.entity.ApplyInfo;
+import com.example.project01.entity.Career;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,5 +24,9 @@ public class ApplyInfoRepository {
         log.info("ApplyRepository.findAll");
         return em.createQuery("select a from ApplyInfo a", ApplyInfo.class)
                 .getResultList();
+    }
+
+    public ApplyInfo findOne(Long id) {
+        return em.find(ApplyInfo.class, id);
     }
 }

@@ -9,6 +9,8 @@ import lombok.Setter;
 @Setter
 public class ApplyInfoForm {
 
+    private Long id;
+
     private String companyName;
 
     private String role;

@@ -50,36 +50,6 @@
                    min="2021-06-05"
                    value="2023-09-15">
         </label>
-<!--        <div class="form-group">-->
-<!--            <label th:for="admissionDate">입학일자</label>-->
-<!--            <select th:field="*{admissionYear}" class="form-control">-->
-<!--                <option>2020</option>-->
-<!--                <option>2021</option>-->
-<!--                <option>2022</option>-->
-<!--                <option>2023</option>-->
-<!--            </select>-->
-<!--            <select th:field="*{admissionMonth}" class="form-control">-->
-<!--                <option>1</option>-->
-<!--                <option>2</option>-->
-<!--                <option>3</option>-->
-<!--                <option>4</option>-->
-<!--            </select>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            <label th:for="graduateDate">졸업일자</label>-->
-<!--            <select th:field="*{graduateYear}" class="form-control">-->
-<!--                <option>2020</option>-->
-<!--                <option>2021</option>-->
-<!--                <option>2022</option>-->
-<!--                <option>2023</option>-->
-<!--            </select>-->
-<!--            <select th:field="*{graduateMonth}" class="form-control">-->
-<!--                <option>1</option>-->
-<!--                <option>2</option>-->
-<!--                <option>3</option>-->
-<!--                <option>4</option>-->
-<!--            </select>-->
-<!--        </div>-->
         <div class="form-group">
             <label th:for="grades">학점</label>
             <input type="text" th:field="*{grades}" class="form-control" placeholder="학점을 입력하세요" th:class="${#fields.hasErrors('grades')}? 'form-controlfieldError' : 'form-control'">

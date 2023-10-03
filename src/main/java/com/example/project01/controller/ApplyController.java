@@ -1,7 +1,9 @@
 package com.example.project01.controller;
 
+import com.example.project01.dto.EducationForm;
 import com.example.project01.entity.ApplyInfo;
 import com.example.project01.dto.ApplyInfoForm;
+import com.example.project01.entity.Education;
 import com.example.project01.service.ApplyInfoService;
 import com.example.project01.type.ApplyType;
 import com.example.project01.type.DeadLineDay;
@@ -10,9 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +45,7 @@ public class ApplyController {
 
         applyInfoService.save(applyInfo);
 
-        return "redirect:/";
+        return "redirect:/loginHome";
     }
 
     @GetMapping("/applyInfoList")
@@ -64,6 +64,34 @@ public class ApplyController {
         ApplyType[] values = ApplyType.values();
         return values;
     }
+
+    @GetMapping("/apply/{appliInfoId}/edit")
+    public String updateApplyInfoForm(@PathVariable("applyInfoId") Long applyInfoId, Model model) {
+        ApplyInfo applyInfo = applyInfoService.findOne(applyInfoId);
+
+        ApplyInfoForm applyInfoForm = new ApplyInfoForm();
+        applyInfoForm.setId(applyInfo.getId());
+        applyInfoForm.setCompanyName(applyInfo.getCompanyName());
+        applyInfoForm.setRole(applyInfo.getRole());
+        applyInfoForm.setQualification(applyInfo.getQualification());
+        applyInfoForm.setDeadLine(applyInfo.getDeadLine());
+        applyInfoForm.setHomePageUrl(applyInfo.getHomePageUrl());
+        applyInfoForm.setSalary(applyInfo.getSalary());
+        applyInfoForm.setApplyCheck(applyInfo.getApplyCheck());
+        applyInfoForm.setCompanyTalent(applyInfo.getCompanyTalent());
+
+        model.addAttribute("applyInfoForm", applyInfoForm);
+        return "applyInfo/updateApplyInfo";
+    }
+
+
+    @PostMapping("/apply/{applyInfoId}/edit")
+    public String updateApplyInfo(@PathVariable Long applyInfoId, @ModelAttribute("applyInfoForm") ApplyInfoForm applyInfoForm) {
+        applyInfoService.updateApplyInfo(applyInfoId, applyInfoForm.getCompanyName(), applyInfoForm.getRole(), applyInfoForm.getQualification(), applyInfoForm.getDeadLine(), applyInfoForm.getHomePageUrl(), applyInfoForm.getSalary(), applyInfoForm.getApplyCheck(), applyInfoForm.getCompanyTalent());
+
+        return "redirect:/applyInfo/applyInfoList";
+    }
+
 
 
 

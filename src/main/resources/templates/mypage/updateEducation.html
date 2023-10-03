@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+    <form th:object="${educationForm}" method="post">
+        <!-- id -->
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label th:for="school">학교</label>
+            <input type="text" th:field="*{school}" class="form-control" placeholder="학교를 입력하세요" />
+        </div>
+        <div class="form-group">
+            <label th:for="degree">학위</label>
+            <input type="text" th:field="*{degree}" class="form-control" placeholder="학위를 입력하세요" />
+        </div>
+        <div class="form-group">
+            <label th:for="major">전공</label>
+            <input type="text" th:field="*{major}" class="form-control" placeholder="전공을 입력하세요" />
+        </div>
+        <label for="admissionDate">입학일을 선택하세요:
+            <input type="date"
+                   th:field="*{admissionDate}"
+                   id="admissionDate"
+                   max="2023-12-31"
+                   min="2021-06-05"
+                   value="2023-09-15">
+        </label>
+        <label for="graduateDate">졸업일을 선택하세요:
+            <input type="date"
+                   th:field="*{graduateDate}"
+                   id="graduateDate"
+                   max="2023-12-31"
+                   min="2021-06-05"
+                   value="2023-09-15">
+        </label>
+        <div class="form-group">
+            <label th:for="grades">학점</label>
+            <input type="text" th:field="*{grades}" class="form-control" placeholder="학점을 입력하세요" />
+        </div>
+        <div class="form-group">
+            <label th:for="prize">수상경력</label>
+            <input type="text" th:field="*{prize}" class="form-control" placeholder="수상경력을 입력하세요" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div th:replace="fragments/footer :: footer" />
+
+</div> <!-- /container -->
+
+</body>
+</html>

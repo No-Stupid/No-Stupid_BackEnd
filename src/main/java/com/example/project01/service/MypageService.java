@@ -32,6 +32,25 @@ public class MypageService {
     }
 
     @Transactional
+    public void updateEducation(Long educationId, String school, String degree, String major, String admissionDate, String graduateDate, float grades, String prize) {
+        Education findEducation = educationRepository.findOne(educationId);
+        findEducation.setSchool(school);
+        findEducation.setDegree(degree);
+        findEducation.setMajor(major);
+        findEducation.setAdmissionDate(admissionDate);
+        findEducation.setGraduateDate(graduateDate);
+        findEducation.setGrades(grades);
+        findEducation.setPrize(prize);
+    }
+
+    public Education findOneEdu(Long educationId) {
+        return educationRepository.findOne(educationId);
+    }
+
+
+
+    //---------경력---------
+    @Transactional
     public Long save_career(Career career) {
         careerRepository.save(career);
         return career.getId();

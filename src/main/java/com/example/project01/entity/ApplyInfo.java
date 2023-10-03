@@ -3,12 +3,14 @@ package com.example.project01.entity;
 import com.example.project01.type.ApplyType;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "applyInfo")
+@RequiredArgsConstructor
 public class ApplyInfo {
 
     @Id
@@ -36,4 +38,8 @@ public class ApplyInfo {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
+
+    public ApplyInfo(Long id) {
+        this.id = id;
+    }
 }

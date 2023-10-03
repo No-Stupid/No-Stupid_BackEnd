@@ -9,10 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -54,6 +51,36 @@ public class MypageController {
         return "mypage/educationList";
     }
 
+    @GetMapping("/education/{educationId}/edit")
+    public String updateEducationForm(@PathVariable("educationId") Long educationId, Model model) {
+        Education education = mypageService.findOneEdu(educationId);
+
+        EducationForm educationForm = new EducationForm();
+        educationForm.setId(education.getId());
+        educationForm.setSchool(education.getSchool());
+        educationForm.setDegree(education.getDegree());
+        educationForm.setMajor(education.getMajor());
+        educationForm.setAdmissionDate(education.getAdmissionDate());
+        educationForm.setGraduateDate(education.getGraduateDate());
+        educationForm.setGrades(education.getGrades());
+        educationForm.setPrize(education.getPrize());
+
+        model.addAttribute("educationForm", educationForm);
+        return "mypage/updateEducation";
+    }
+
+    @PostMapping("/education/{educationId}/edit")
+    public String updateEducation(@PathVariable Long educationId, @ModelAttribute("educationForm") EducationForm educationForm) {
+        mypageService.updateEducation(educationId, educationForm.getSchool(), educationForm.getDegree(), educationForm.getMajor(), educationForm.getAdmissionDate(), educationForm.getGraduateDate(), educationForm.getGrades(), educationForm.getPrize());
+
+        return "redirect:/mypage/educationList";
+    }
+
+
+
+
+    //--------경력------
+
     @GetMapping("/career")
     public String careerForm(Model model) {
         model.addAttribute("careerForm", new CareerForm());
@@ -82,7 +109,7 @@ public class MypageController {
         return "mypage/careerList";
     }
 
-    @GetMapping("/career/{id}/edit")
+    @GetMapping("/career/{careerId}/edit")
     public String updateCareerForm(@PathVariable("careerId") Long careerId, Model model) {
         Career career = mypageService.findOne(careerId);
 
@@ -96,6 +123,13 @@ public class MypageController {
 
         model.addAttribute("careerForm", careerForm);
         return "mypage/updateCareer";
+    }
+
+    @PostMapping("/career/{careerId}/edit")
+    public String updateCareer(@PathVariable Long careerId, @ModelAttribute("careerForm") CareerForm careerForm) {
+        mypageService.updateCareer(careerId, careerForm.getCompany(), careerForm.getRole(), careerForm.getJob(), careerForm.getJoinCompanyDate(), careerForm.getLeaveCompanyDate());
+
+        return "redirect:/mypage/careerList";
     }
 
 }

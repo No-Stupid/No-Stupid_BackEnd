@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class EducationForm {
+    private Long id;
 
     private String school;
 

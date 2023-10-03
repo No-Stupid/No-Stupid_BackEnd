@@ -2,13 +2,12 @@ package com.example.project01.api;
 
 
 import com.example.project01.dto.Member.MemberFormDTO;
+import com.example.project01.dto.Member.MemberUpdateForm;
 import com.example.project01.entity.Member;
 import com.example.project01.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,4 +30,13 @@ public class MemberApiController {
         return new Member(id);
 
     }
+    @PutMapping("/api/member/edit/{id}")
+    public Member updateMember(
+            @PathVariable("id") Long id,
+            @RequestBody @Valid MemberUpdateForm memberUpdateForm) {
+        memberService.updateMember(id, memberUpdateForm.getMemberPhone(), memberUpdateForm.getMemberEmail(), memberUpdateForm.getMemberPwd());
+        Member findMember = memberService.findOne(id);
+        return new Member(findMember.getId());
+    }
+
 }

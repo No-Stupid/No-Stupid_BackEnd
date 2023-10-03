@@ -22,5 +22,9 @@ public class EducationRepository {
                 .getResultList();
     }
 
+    public Education findOne(Long id) {
+        return em.find(Education.class, id);
+    }
+
 
 }

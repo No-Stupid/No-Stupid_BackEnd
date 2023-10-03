@@ -13,10 +13,10 @@
                 <th>기업명</th>
                 <th>직무</th>
                 <th>자격요건</th>
-<!--                <th>마감일</th>-->
+                <th>마감일</th>
                 <th>기업 홈페이지</th>
                 <th>연봉</th>
-<!--                <th>지원여부</th>-->
+                <th>지원여부</th>
                 <th>기업 인재상</th>
             </tr>
             </thead>
@@ -26,11 +26,14 @@
                 <td th:text="${applyInfo.companyName}"></td>
                 <td th:text="${applyInfo.role}"></td>
                 <td th:text="${applyInfo.qualification}"></td>
-<!--                <td th:text="${applyInfo.deadLine}"></td>-->
+                <td th:text="${applyInfo.deadLine}"></td>
                 <td th:text="${applyInfo.homePageUrl}"></td>
                 <td th:text="${applyInfo.salary}"></td>
-<!--                <td th:text="${applyInfo.applyCheck}"></td>-->
+                <td th:text="${applyInfo.applyCheck}"></td>
                 <td th:text="${applyInfo.companyTalent}"></td>
+                <td>
+                    <a href="#" th:href="@{/apply/{id}/edit (id=${applyInfo.id})}" class="btn btn-primary" role="button">수정</a>
+                </td>
             </tr>
             </tbody>
         </table>

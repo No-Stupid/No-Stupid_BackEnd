@@ -7,10 +7,7 @@ import com.example.project01.entity.Education;
 import com.example.project01.service.MypageService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,6 +40,19 @@ public class MypageApiController {
         return mypageService.list_edu();
     }
 
+    @PutMapping("/api/education/edit/{educationId}")
+    public Education updateEducation(
+            @PathVariable("educationId") Long educationId,
+            @RequestBody @Valid EducationForm educationForm) {
+        mypageService.updateEducation(educationId, educationForm.getSchool(), educationForm.getDegree(), educationForm.getMajor(), educationForm.getAdmissionDate(), educationForm.getGraduateDate(), educationForm.getGrades(), educationForm.getPrize());
+        Education findEducation = mypageService.findOneEdu(educationId);
+        return new Education(findEducation.getId());
+    }
+
+
+
+    //-------경력-------
+
     @PostMapping("/api/mypage/career")
     public Career saveCareer(@RequestBody @Valid CareerForm careerForm) {
 
@@ -62,6 +72,15 @@ public class MypageApiController {
     @GetMapping("/api/mypage/careerlist")
     public List<Career> careerList() {
         return mypageService.list_career();
+    }
+
+    @PutMapping("/api/career/edit/{careerId}")
+    public Career updateCareer(
+            @PathVariable("careerId") Long careerId,
+            @RequestBody @Valid CareerForm careerForm) {
+        mypageService.updateCareer(careerId, careerForm.getCompany(), careerForm.getRole(), careerForm.getJob(), careerForm.getJoinCompanyDate(), careerForm.getLeaveCompanyDate());
+        Career findCareer = mypageService.findOne(careerId);
+        return new Career(findCareer.getId());
     }
 
 }
