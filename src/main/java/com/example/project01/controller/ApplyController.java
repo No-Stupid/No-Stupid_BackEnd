@@ -1,20 +1,15 @@
 package com.example.project01.controller;
 
-import com.example.project01.dto.EducationForm;
 import com.example.project01.entity.ApplyInfo;
 import com.example.project01.dto.ApplyInfoForm;
-import com.example.project01.entity.Education;
 import com.example.project01.service.ApplyInfoService;
 import com.example.project01.type.ApplyType;
-import com.example.project01.type.DeadLineDay;
-import com.example.project01.type.DeadLineMonth;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller

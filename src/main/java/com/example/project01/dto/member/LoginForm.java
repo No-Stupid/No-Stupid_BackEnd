@@ -1,7 +1,6 @@
-package com.example.project01.dto.Member;
+package com.example.project01.dto.member;
 
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

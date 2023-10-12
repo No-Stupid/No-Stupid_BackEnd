@@ -1,9 +1,11 @@
 package com.example.project01.controller;
 
-import com.example.project01.dto.CareerForm;
-import com.example.project01.dto.EducationForm;
+import com.example.project01.dto.mypage.CareerForm;
+import com.example.project01.dto.mypage.EducationForm;
+import com.example.project01.dto.mypage.PortfolioForm;
 import com.example.project01.entity.Career;
 import com.example.project01.entity.Education;
+import com.example.project01.entity.Portfolio;
 import com.example.project01.service.MypageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -78,9 +80,7 @@ public class MypageController {
 
 
 
-
     //--------경력------
-
     @GetMapping("/career")
     public String careerForm(Model model) {
         model.addAttribute("careerForm", new CareerForm());
@@ -111,7 +111,7 @@ public class MypageController {
 
     @GetMapping("/career/{careerId}/edit")
     public String updateCareerForm(@PathVariable("careerId") Long careerId, Model model) {
-        Career career = mypageService.findOne(careerId);
+        Career career = mypageService.findOneCareer(careerId);
 
         CareerForm careerForm = new CareerForm();
         careerForm.setId(career.getId());
@@ -130,6 +130,54 @@ public class MypageController {
         mypageService.updateCareer(careerId, careerForm.getCompany(), careerForm.getRole(), careerForm.getJob(), careerForm.getJoinCompanyDate(), careerForm.getLeaveCompanyDate());
 
         return "redirect:/mypage/careerList";
+    }
+
+
+    //------포트폴리오------
+
+    @GetMapping("/portfolio")
+    public String portfolioForm(Model model) {
+        model.addAttribute("portfolioForm", new PortfolioForm());
+        return "mypage/portfolioForm";
+    }
+
+    @PostMapping("/portfolio")
+    public String portfolio(PortfolioForm portfolioForm) {
+
+        Portfolio portfolio = new Portfolio();
+        portfolio.setPlatform(portfolioForm.getPlatform());
+        portfolio.setLink(portfolioForm.getLink());
+
+        mypageService.save_portfolio(portfolio);
+
+        return "loginHome";
+    }
+
+    @GetMapping("/portfolioList")
+    public String portfolioList(Model model) {
+        List<Portfolio> portfolios = mypageService.list_portfolio();
+        model.addAttribute("portfolio", portfolios);
+        return "mypage/portfolioList";
+    }
+
+    @GetMapping("/portfolio/{portfolioId}/edit")
+    public String updatePortfolioForm(@PathVariable("portfolioId") Long portfolioId, Model model) {
+        Portfolio portfolio = mypageService.findOnePortfolio(portfolioId);
+
+        PortfolioForm portfolioForm = new PortfolioForm();
+        portfolioForm.setPlatform(portfolio.getPlatform());
+        portfolioForm.setLink(portfolio.getLink());
+
+        model.addAttribute("portfolioForm", portfolioForm);
+
+        return "mypage/updatePortfolio";
+    }
+
+    @PostMapping("/portfolio/{portfolioId}/edit")
+    public String updatePortfolio(@PathVariable Long portfolioId, @ModelAttribute("portfolioForm") PortfolioForm portfolioForm) {
+        mypageService.updatePortfolio(portfolioId, portfolioForm.getPlatform(), portfolioForm.getLink());
+
+        return "redirect:/mypage/portfolioList";
     }
 
 }

@@ -2,8 +2,10 @@ package com.example.project01.service;
 
 import com.example.project01.entity.Career;
 import com.example.project01.entity.Education;
+import com.example.project01.entity.Portfolio;
 import com.example.project01.repository.CareerRepository;
 import com.example.project01.repository.EducationRepository;
+import com.example.project01.repository.PortfolioRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +22,8 @@ public class MypageService {
 
     private final EducationRepository educationRepository;
     private final CareerRepository careerRepository;
+
+    private final PortfolioRepository portfolioRepository;
 
     @Transactional
     public Long save_edu(Education education) {
@@ -70,8 +74,32 @@ public class MypageService {
         findCareer.setLeaveCompanyDate(leaveCompanyDate);
     }
 
-    public Career findOne(Long careerId) {
+    public Career findOneCareer(Long careerId) {
         return careerRepository.findOne(careerId);
+    }
+
+
+    //-------포트폴리오------
+
+    @Transactional
+    public Long save_portfolio(Portfolio portfolio) {
+        portfolioRepository.save(portfolio);
+        return portfolio.getId();
+    }
+
+    public List<Portfolio> list_portfolio() {
+        return portfolioRepository.findAll();
+    }
+
+    @Transactional
+    public void updatePortfolio(Long portfolioId, String platform, String link) {
+        Portfolio portfolio = new Portfolio();
+        portfolio.setPlatform(platform);
+        portfolio.setLink(link);
+    }
+
+    public Portfolio findOnePortfolio(Long portfolioId) {
+        return portfolioRepository.findOne(portfolioId);
     }
 
 }

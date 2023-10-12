@@ -1,12 +1,15 @@
 package com.example.project01.api;
 
-import com.example.project01.dto.CareerForm;
-import com.example.project01.dto.EducationForm;
+import com.example.project01.dto.mypage.CareerForm;
+import com.example.project01.dto.mypage.EducationForm;
+import com.example.project01.dto.mypage.PortfolioForm;
 import com.example.project01.entity.Career;
 import com.example.project01.entity.Education;
+import com.example.project01.entity.Portfolio;
 import com.example.project01.service.MypageService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -79,8 +82,37 @@ public class MypageApiController {
             @PathVariable("careerId") Long careerId,
             @RequestBody @Valid CareerForm careerForm) {
         mypageService.updateCareer(careerId, careerForm.getCompany(), careerForm.getRole(), careerForm.getJob(), careerForm.getJoinCompanyDate(), careerForm.getLeaveCompanyDate());
-        Career findCareer = mypageService.findOne(careerId);
+        Career findCareer = mypageService.findOneCareer(careerId);
         return new Career(findCareer.getId());
     }
+
+    //------포트폴리오------
+    @PostMapping("/api/mypage/portfolio")
+    public Portfolio savePortfolio(@RequestBody @Valid PortfolioForm portfolioForm) {
+
+        Portfolio portfolio = new Portfolio();
+
+        portfolio.setPlatform(portfolioForm.getPlatform());
+        portfolio.setLink(portfolio.getLink());
+
+        Long id = mypageService.save_portfolio(portfolio);
+
+        return new Portfolio(id);
+    }
+
+    @GetMapping("/api/mypage/portfoliolist")
+    public List<Portfolio> portfolioList() {
+        return mypageService.list_portfolio();
+    }
+
+    @PutMapping("/api/portfolio/edit/{portfolioId}")
+    public Portfolio updatePortfolio(
+            @PathVariable("portfolioId") Long portfolioId,
+            @RequestBody @Valid PortfolioForm portfolioForm) {
+        mypageService.updatePortfolio(portfolioId, portfolioForm.getPlatform(), portfolioForm.getLink());
+        Portfolio findPortfolio = mypageService.findOnePortfolio(portfolioId);
+        return new Portfolio(findPortfolio.getId());
+    }
+
 
 }

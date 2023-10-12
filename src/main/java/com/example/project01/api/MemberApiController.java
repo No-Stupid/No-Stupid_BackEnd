@@ -1,8 +1,8 @@
 package com.example.project01.api;
 
 
-import com.example.project01.dto.Member.MemberFormDTO;
-import com.example.project01.dto.Member.MemberUpdateForm;
+import com.example.project01.dto.member.MemberFormDTO;
+import com.example.project01.dto.member.MemberUpdateForm;
 import com.example.project01.entity.Member;
 import com.example.project01.service.MemberService;
 import jakarta.validation.Valid;

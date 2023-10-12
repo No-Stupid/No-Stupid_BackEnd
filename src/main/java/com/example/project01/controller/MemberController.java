@@ -1,11 +1,10 @@
 package com.example.project01.controller;
 
-import com.example.project01.dto.Member.MemberFormDTO;
-import com.example.project01.dto.Member.MemberUpdateForm;
+import com.example.project01.dto.member.MemberFormDTO;
+import com.example.project01.dto.member.MemberUpdateForm;
 import com.example.project01.entity.Member;
 import com.example.project01.service.MemberService;
 import jakarta.validation.Valid;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
