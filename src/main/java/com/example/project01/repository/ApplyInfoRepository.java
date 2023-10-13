@@ -29,4 +29,8 @@ public class ApplyInfoRepository {
     public ApplyInfo findOne(Long id) {
         return em.find(ApplyInfo.class, id);
     }
+
+    public void remove(ApplyInfo applyInfo) {
+        em.remove(applyInfo);
+    }
 }

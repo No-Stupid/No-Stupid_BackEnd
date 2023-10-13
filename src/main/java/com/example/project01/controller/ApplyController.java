@@ -40,7 +40,7 @@ public class ApplyController {
 
         applyInfoService.save(applyInfo);
 
-        return "redirect:/loginHome";
+        return "redirect:/";
     }
 
     @GetMapping("/applyInfoList")
@@ -55,7 +55,7 @@ public class ApplyController {
     }
 
     @ModelAttribute("applyTypes")
-    public ApplyType[] applyTypes() {
+    public ApplyType[] applyType() {
         ApplyType[] values = ApplyType.values();
         return values;
     }
@@ -87,7 +87,12 @@ public class ApplyController {
         return "redirect:/applyInfo/applyInfoList";
     }
 
+    @PostMapping("/apply/{applyInfoId}/remove")
+    public String removeApplyInfo(ApplyInfo applyInfo) {
+        applyInfoService.remove(applyInfo);
 
+        return "redirect:/applyInfoList";
+    }
 
 
 }

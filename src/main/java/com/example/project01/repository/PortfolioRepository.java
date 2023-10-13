@@ -19,7 +19,7 @@ public class PortfolioRepository {
     }
 
     public List<Portfolio> findAll() {
-        return em.createQuery("select e from Portfolio p", Portfolio.class)
+        return em.createQuery("select p from Portfolio p", Portfolio.class)
                 .getResultList();
     }
 

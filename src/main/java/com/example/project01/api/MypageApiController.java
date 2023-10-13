@@ -9,7 +9,6 @@ import com.example.project01.entity.Portfolio;
 import com.example.project01.service.MypageService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

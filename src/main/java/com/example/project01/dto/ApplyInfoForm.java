@@ -23,6 +23,7 @@ public class ApplyInfoForm {
 
     private String salary;
 
+    //@Enumerated(EnumType.STRING)
     private ApplyType applyCheck;
 
     private String companyTalent;

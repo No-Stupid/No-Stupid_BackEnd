@@ -48,4 +48,9 @@ public class ApplyInfoService {
         return applyInfoRepository.findOne(applyInfoId);
     }
 
+
+    public Long remove(ApplyInfo applyInfo) {
+        applyInfoRepository.remove(applyInfo);
+        return applyInfo.getId();
+    }
 }
