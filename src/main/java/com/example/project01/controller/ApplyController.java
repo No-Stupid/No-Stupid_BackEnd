@@ -87,9 +87,9 @@ public class ApplyController {
         return "redirect:/applyInfo/applyInfoList";
     }
 
-    @PostMapping("/apply/{applyInfoId}/remove")
-    public String removeApplyInfo(ApplyInfo applyInfo) {
-        applyInfoService.remove(applyInfo);
+    @GetMapping("/apply/{applyInfoId}/remove")
+    public String removeApplyInfo(Long applyInfoId) {
+        applyInfoService.remove(applyInfoId);
 
         return "redirect:/applyInfoList";
     }
