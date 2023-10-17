@@ -49,7 +49,9 @@ public class ApplyInfoService {
     }
 
 
-    public void remove(Long applyInfoId) {
+    public Long remove(Long applyInfoId) {
+        log.info("service.remove");
         applyInfoRepository.remove(applyInfoId);
+        return applyInfoId;
     }
 }

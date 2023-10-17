@@ -30,7 +30,9 @@ public class ApplyInfoRepository {
         return em.find(ApplyInfo.class, id);
     }
 
-    public void remove(Long applyInfoId) {
-        em.remove(applyInfoId);
+    public void remove(Long id) {
+        log.info("repository.remove");
+        ApplyInfo findApply = findOne(id);
+        em.remove(findApply);
     }
 }
