@@ -43,7 +43,7 @@ public class MypageController {
 
         mypageService.save_edu(education);
 
-        return "loginHome";
+        return "redirect:/";
     }
 
     @GetMapping("/educationList")
@@ -99,7 +99,7 @@ public class MypageController {
 
         mypageService.save_career(career);
 
-        return "loginHome";
+        return "redirect:/";
     }
 
     @GetMapping("/careerList")
@@ -150,7 +150,7 @@ public class MypageController {
 
         mypageService.save_portfolio(portfolio);
 
-        return "loginHome";
+        return "redirect:/";
     }
 
     @GetMapping("/portfolioList")

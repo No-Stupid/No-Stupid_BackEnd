@@ -40,7 +40,7 @@ public class ApplyController {
 
         applyInfoService.save(applyInfo);
 
-        return "redirect:/home";
+        return "redirect:/";
     }
 
     @GetMapping("/applyInfoList")
@@ -92,7 +92,7 @@ public class ApplyController {
         log.info("controller.remove");
         applyInfoService.remove(applyInfoId);
 
-        return "redirect:/home";
+        return "redirect:/";
     }
 
 

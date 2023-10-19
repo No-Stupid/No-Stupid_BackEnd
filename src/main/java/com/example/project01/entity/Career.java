@@ -27,9 +27,9 @@ public class Career {
 
     private String leaveCompanyDate;
 
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
+//    @ManyToOne
+//    @JoinColumn(name = "member_id")
+//    private Member member;
 
     public Career(Long id) {
         this.id = id;

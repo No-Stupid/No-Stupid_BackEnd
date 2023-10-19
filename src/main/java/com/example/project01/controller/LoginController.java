@@ -59,7 +59,7 @@ public class LoginController {
 
         log.info("loginMember={}", loginMember.getMemberName());
 
-        return "loginHome";
+        return "redirect:" + redirectURL;
     }
 
     @PostMapping("/logout")
