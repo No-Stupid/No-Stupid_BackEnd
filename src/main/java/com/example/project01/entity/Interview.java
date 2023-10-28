@@ -4,20 +4,27 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+
+
 @Entity
 @Getter
 @Setter
-@Table(name = "todolist")
+@Table(name = "interview")
 @RequiredArgsConstructor
+public class Interview {
 
-public class ToDoList {
     @Id
     @GeneratedValue
-    @Column(name = "todolist_id")
+    @Column(name = "interview _id")
     private Long id;
-    private String memo;
 
-    public ToDoList(Long id) {
+    private String companyName;
+
+    private String role;
+
+    private String question;
+
+    public Interview(Long id) {
         this.id = id;
     }
 }

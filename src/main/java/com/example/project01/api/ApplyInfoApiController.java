@@ -15,6 +15,7 @@ public class ApplyInfoApiController {
 
     private final ApplyInfoService applyInfoService;
 
+
     @PostMapping("/api/applyInfo")
     public ApplyInfo saveApplyInfo(@RequestBody @Valid ApplyInfoForm applyInfoForm) {
         ApplyInfo applyInfo = new ApplyInfo();
