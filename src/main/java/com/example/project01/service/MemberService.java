@@ -50,8 +50,9 @@ public class MemberService {
     }
 
     @Transactional
-    public void updateMember(Long id, String memberPhone, String memberEmail, String memberPwd){
+    public void updateMember(Long id, String memberName, String memberPhone, String memberEmail, String memberPwd){
         Member findMember = memberRepository.findOne(id);
+        findMember.setMemberName(memberName);
         findMember.setMemberPhone(memberPhone);
         findMember.setMemberEmail(memberEmail);
         findMember.setMemberPwd(memberPwd);

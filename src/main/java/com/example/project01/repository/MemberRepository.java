@@ -29,9 +29,6 @@ public class MemberRepository {
                 .getResultList();
     }
 
-//    public Optional<Member> findByEmail(String memberEmail) {
-//        return findAll()
-//    }
 
     public List<Member> findAll() {
         return em.createQuery("select m from Member m", Member.class)

@@ -55,9 +55,11 @@ public class InterviewController {
 
         InterviewForm interviewForm = new InterviewForm();
         interviewForm.setId(interview.getId());
-        interview.setCompanyName(interview.getCompanyName());
-        interview.setRole(interview.getRole());
-        interview.setQuestion(interview.getQuestion());
+        interviewForm.setCompanyName(interview.getCompanyName());
+        interviewForm.setRole(interview.getRole());
+        interviewForm.setQuestion(interview.getQuestion());
+        interviewForm.setPassCheck(interview.getPassCheck());
+        interviewForm.setReview(interview.getReview());
 
         model.addAttribute("interviewList",interviewForm);
         return "interview/updateInterview";
@@ -66,7 +68,7 @@ public class InterviewController {
 
     @PostMapping("/interview/{interviewId}/edit")
     public String updateInterview(@PathVariable Long interviewId, @ModelAttribute("interviewForm") InterviewForm interviewForm) {
-        interviewService.updateInterview(interviewId, interviewForm.getCompanyName(), interviewForm.getRole(), interviewForm.getQuestion());
+        interviewService.updateInterview(interviewId, interviewForm.getCompanyName(), interviewForm.getRole(), interviewForm.getQuestion(), interviewForm.getPassCheck(), interviewForm.getReview());
 
         return "redirect:/interview/interviewList";
     }

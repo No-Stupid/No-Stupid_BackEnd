@@ -2,6 +2,7 @@ package com.example.project01.service;
 
 import com.example.project01.entity.Interview;
 import com.example.project01.repository.InterviewRepository;
+import com.example.project01.type.PassType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -29,12 +30,14 @@ public class InterviewService {
     }
 
     @Transactional
-    public void updateInterview(Long interviewId, String companyName, String role, String question) {
+    public void updateInterview(Long interviewId, String companyName, String role, String question, PassType passCheck, String review) {
         Interview findInterview = interviewRepository.findOne(interviewId);
 
         findInterview.setCompanyName(companyName);
         findInterview.setRole(role);
         findInterview.setQuestion(question);
+        findInterview.setPassCheck(passCheck);
+        findInterview.setReview(review);
     }
 
     public Interview findOne(Long interviewId) {

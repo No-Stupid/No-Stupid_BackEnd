@@ -65,7 +65,7 @@ public class MemberController {
 
     @PostMapping("/member/edit/{id}")
     public String updateMember(@PathVariable Long id, @ModelAttribute("memberUpdateForm")MemberUpdateForm memberUpdateForm) {
-        memberService.updateMember(id, memberUpdateForm.getMemberPhone(), memberUpdateForm.getMemberEmail(), memberUpdateForm.getMemberPwd());
+        memberService.updateMember(id, memberUpdateForm.getMemberName(), memberUpdateForm.getMemberPhone(), memberUpdateForm.getMemberEmail(), memberUpdateForm.getMemberPwd());
 
         return "redirect:/loginHome";
     }

@@ -27,6 +27,8 @@ public class ApplyInfoApiController {
         applyInfo.setHomePageUrl(applyInfoForm.getHomePageUrl());
         applyInfo.setSalary(applyInfoForm.getSalary());
         applyInfo.setApplyCheck(applyInfoForm.getApplyCheck());
+        applyInfo.setDocumentCheck(applyInfoForm.getDocumentCheck());
+        applyInfo.setInterviewCheck(applyInfoForm.getInterviewCheck());
         applyInfo.setCompanyTalent(applyInfoForm.getCompanyTalent());
 
         Long id = applyInfoService.save(applyInfo);

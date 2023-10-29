@@ -35,7 +35,7 @@ public class ToDoListController {
         return "redirect:/";
     }
 
-    @GetMapping("/toDoList")
+    @GetMapping("/toDo_list")
     public String toDoList(Model model) {
         log.info("controller");
         //log.info("list={}",List<ApplyInfo>);

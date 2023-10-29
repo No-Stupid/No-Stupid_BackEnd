@@ -32,9 +32,9 @@ public class ToDoListApiController {
         return toDoListService.list_todo();
     }
 
-    @PostMapping("/api/toDoList/edit/{toDoListId}")
+    @PutMapping("/api/toDoList/edit/{toDoListId}")
     public ToDoList updateToDoList(
-            @PathVariable("toDoList_id") Long toDoListId,
+            @PathVariable("todolist_id") Long toDoListId,
             @RequestBody @Valid ToDoListForm toDoListForm) {
         toDoListService.updateToDoList(toDoListId, toDoListForm.getMemo());
         ToDoList findToDoList = toDoListService.findOne(toDoListId);

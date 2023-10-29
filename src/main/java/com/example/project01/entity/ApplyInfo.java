@@ -1,6 +1,8 @@
 package com.example.project01.entity;
 
 import com.example.project01.type.ApplyType;
+import com.example.project01.type.DocumentType;
+import com.example.project01.type.InterviewType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +34,12 @@ public class ApplyInfo {
 
     @Enumerated(EnumType.STRING)
     private ApplyType applyCheck;
+
+    @Enumerated(EnumType.STRING)
+    private DocumentType documentCheck;
+
+    @Enumerated(EnumType.STRING)
+    private InterviewType interviewCheck;
 
     private String companyTalent;
 

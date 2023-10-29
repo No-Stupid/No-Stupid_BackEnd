@@ -4,6 +4,8 @@ import com.example.project01.entity.ApplyInfo;
 import com.example.project01.entity.Career;
 import com.example.project01.repository.ApplyInfoRepository;
 import com.example.project01.type.ApplyType;
+import com.example.project01.type.DocumentType;
+import com.example.project01.type.InterviewType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,7 +33,7 @@ public class ApplyInfoService {
     }
 
     @Transactional
-    public void updateApplyInfo(Long applyInfoId, String companyName, String role, String qualification, String deadLine, String homePageUrl, String salary, ApplyType applyCheck, String companyTalent) {
+    public void updateApplyInfo(Long applyInfoId, String companyName, String role, String qualification, String deadLine, String homePageUrl, String salary, ApplyType applyCheck, DocumentType documentCheck, InterviewType interviewCheck, String companyTalent) {
         ApplyInfo findApplyInfo = applyInfoRepository.findOne(applyInfoId);
 
         findApplyInfo.setCompanyName(companyName);
@@ -41,6 +43,8 @@ public class ApplyInfoService {
         findApplyInfo.setHomePageUrl(homePageUrl);
         findApplyInfo.setSalary(salary);
         findApplyInfo.setApplyCheck(applyCheck);
+        findApplyInfo.setDocumentCheck(documentCheck);
+        findApplyInfo.setInterviewCheck(interviewCheck);
         findApplyInfo.setCompanyTalent(companyTalent);
     }
 

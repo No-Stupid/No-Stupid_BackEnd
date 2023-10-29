@@ -10,6 +10,9 @@ import lombok.Setter;
 public class MemberUpdateForm {
 
     @NotEmpty(message = "필수 입력 값입니다")
+    private String memberName;
+
+    @NotEmpty(message = "필수 입력 값입니다")
     private String memberPhone;
 
     @NotEmpty(message = "필수 입력 값입니다")

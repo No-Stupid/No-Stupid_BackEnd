@@ -4,6 +4,8 @@ import com.example.project01.entity.ApplyInfo;
 import com.example.project01.dto.ApplyInfoForm;
 import com.example.project01.service.ApplyInfoService;
 import com.example.project01.type.ApplyType;
+import com.example.project01.type.DocumentType;
+import com.example.project01.type.InterviewType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -55,8 +57,20 @@ public class ApplyController {
     }
 
     @ModelAttribute("applyTypes")
-    public ApplyType[] applyType() {
+    public ApplyType[] applyType() { //지원 타입을 enum으로 받아서 배열로 뷰에 뿌림
         ApplyType[] values = ApplyType.values();
+        return values;
+    }
+
+    @ModelAttribute("documentTypes")
+    public DocumentType[] documentTypes() {
+        DocumentType[] values = DocumentType.values();
+        return values;
+    }
+
+    @ModelAttribute("interviewTypes")
+    public InterviewType[] interviewTypes() {
+        InterviewType[] values = InterviewType.values();
         return values;
     }
 
@@ -73,6 +87,8 @@ public class ApplyController {
         applyInfoForm.setHomePageUrl(applyInfo.getHomePageUrl());
         applyInfoForm.setSalary(applyInfo.getSalary());
         applyInfoForm.setApplyCheck(applyInfo.getApplyCheck());
+        applyInfoForm.setDocumentCheck(applyInfo.getDocumentCheck());
+        applyInfoForm.setInterviewCheck(applyInfo.getInterviewCheck());
         applyInfoForm.setCompanyTalent(applyInfo.getCompanyTalent());
 
         model.addAttribute("applyInfoForm", applyInfoForm);
@@ -82,7 +98,7 @@ public class ApplyController {
 
     @PostMapping("/apply/{applyInfoId}/edit")
     public String updateApplyInfo(@PathVariable Long applyInfoId, @ModelAttribute("applyInfoForm") ApplyInfoForm applyInfoForm) {
-        applyInfoService.updateApplyInfo(applyInfoId, applyInfoForm.getCompanyName(), applyInfoForm.getRole(), applyInfoForm.getQualification(), applyInfoForm.getDeadLine(), applyInfoForm.getHomePageUrl(), applyInfoForm.getSalary(), applyInfoForm.getApplyCheck(), applyInfoForm.getCompanyTalent());
+        applyInfoService.updateApplyInfo(applyInfoId, applyInfoForm.getCompanyName(), applyInfoForm.getRole(), applyInfoForm.getQualification(), applyInfoForm.getDeadLine(), applyInfoForm.getHomePageUrl(), applyInfoForm.getSalary(), applyInfoForm.getApplyCheck(), applyInfoForm.getDocumentCheck(), applyInfoForm.getInterviewCheck(), applyInfoForm.getCompanyTalent());
 
         return "redirect:/applyInfo/applyInfoList";
     }
