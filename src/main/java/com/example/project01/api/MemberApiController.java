@@ -25,7 +25,6 @@ public class MemberApiController {
         member.setMemberPhone(memberFormDTO.getMemberPhone());
         member.setMemberEmail(memberFormDTO.getMemberEmail());
         member.setMemberPwd(memberFormDTO.getMemberPwd());
-
         Long id = memberService.join(member);
         return new Member(id);
 
