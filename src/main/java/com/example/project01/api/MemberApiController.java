@@ -27,7 +27,6 @@ public class MemberApiController {
         member.setMemberPwd(memberFormDTO.getMemberPwd());
         Long id = memberService.join(member);
         return new Member(id);
-
     }
     @PutMapping("/api/member/edit/{id}")
     public Member updateMember(
