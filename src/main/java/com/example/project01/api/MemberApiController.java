@@ -7,6 +7,7 @@ import com.example.project01.entity.Member;
 import com.example.project01.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,7 +35,7 @@ public class MemberApiController {
     public Member updateMember(
             @PathVariable("id") Long id,
             @RequestBody @Valid MemberUpdateForm memberUpdateForm) {
-        memberService.updateMember(id, memberUpdateForm.getMemberPhone(), memberUpdateForm.getMemberEmail(), memberUpdateForm.getMemberPwd());
+        memberService.updateMember(id, memberUpdateForm.getMemberPhone(), memberUpdateForm.getMemberEmail(), memberUpdateForm.getMemberName(), memberUpdateForm.getMemberPwd());
         Member findMember = memberService.findOne(id);
         return new Member(findMember.getId());
     }

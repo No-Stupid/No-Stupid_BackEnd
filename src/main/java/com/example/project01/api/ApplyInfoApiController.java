@@ -45,7 +45,7 @@ public class ApplyInfoApiController {
     public ApplyInfo updateApplyInfo(
             @PathVariable("applyInfoId") Long applyInfoId,
             @RequestBody @Valid ApplyInfoForm applyInfoForm) {
-        applyInfoService.updateApplyInfo(applyInfoId, applyInfoForm.getCompanyName(), applyInfoForm.getRole(), applyInfoForm.getQualification(), applyInfoForm.getDeadLine(), applyInfoForm.getHomePageUrl(), applyInfoForm.getSalary(), applyInfoForm.getApplyCheck(), applyInfoForm.getCompanyTalent());
+        applyInfoService.updateApplyInfo(applyInfoId, applyInfoForm.getCompanyName(), applyInfoForm.getRole(), applyInfoForm.getQualification(), applyInfoForm.getDeadLine(), applyInfoForm.getHomePageUrl(), applyInfoForm.getSalary(), applyInfoForm.getApplyCheck(),applyInfoForm.getDocumentCheck(), applyInfoForm.getInterviewCheck(), applyInfoForm.getCompanyTalent());
         ApplyInfo findApplyInfo = applyInfoService.findOne(applyInfoId);
         return new ApplyInfo(findApplyInfo.getId());
     }
